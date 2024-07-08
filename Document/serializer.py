@@ -7,6 +7,9 @@ class ListValueSerializer(serializers.ModelSerializer):
         model = TableActives
         fields = "__all__"
 
+class FileUploadSerializer(serializers.Serializer):
+    file = serializers.FileField()
+
 
 
 
