@@ -1,3 +1,6 @@
+import csv
+import io
+
 from django.shortcuts import render
 from rest_framework import viewsets, status
 from .serializer import ListValueSerializer
@@ -6,6 +9,7 @@ from .serializer import FileUploadSerializer
 import pandas as pd
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -32,6 +36,21 @@ class FileUploadView(APIView):
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+def export_csv(request):
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = 'attachment; filename="Datos.csv"'
+    buffer = io.StringIO()
+    writer_csv = csv.writer(buffer)
+    writer_csv.writerow(["Category", "Name", "Description", "Value", "Risk"])
+
+    for cellvalue in TableActives.objects.all():
+        writer_csv.writerow(
+        [cellvalue.category, cellvalue.name, cellvalue.description, cellvalue.value, cellvalue.risk])
+
+    response.write(buffer.getvalue().encode('utf-8-sig'))
+
+    return response
 
 
 

@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {importDocument} from "../api/documentApi.ts";
+import {Input} from "../components/ui/input.tsx";
+import {Label} from "../components/ui/label.tsx";
 
 export function UploadFile() {
 
@@ -17,10 +19,13 @@ export function UploadFile() {
     }
 
 
-    return(<div>
-        <form onSubmit={onSubmit}>
-            <input type= "file" onChange={handleFile}/>
-            <button type= "submit">Import</button>
+    return (
+<div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center min-h-screen">
+    <form onSubmit={onSubmit}>
+        <Label htmlFor="file">Archivo csv</Label>
+        <Input onChange={handleFile} type="file"/>
+        <button type= "submit">Guardar</button>
         </form>
-    </div>)
+    </div>
+    )
 }

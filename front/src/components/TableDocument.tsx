@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "./ui/table.tsx"
 import {useEffect, useState} from "react";
-import {getAllDocuments} from "../api/documentApi.ts";
+import {exportDb, getAllDocuments} from "../api/documentApi.ts";
 import {Button} from "./ui/button.tsx";
 
 
@@ -18,6 +18,11 @@ export function TableDocument(){
   // const handlePageChange = (pageNumber) => {
   //   setCurrentPage(pageNumber)
   // }
+
+    const HandleExport = async () => {
+        const res = await exportDb()
+        console.log(res)
+    }
 
     const [documents,setDocuments] = useState([])
     useEffect(() => {
@@ -46,8 +51,8 @@ export function TableDocument(){
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Nombre</TableHead>
               <TableHead>Categoria</TableHead>
+              <TableHead>Nombre</TableHead>
               <TableHead>Descripcion</TableHead>
                 <TableHead>Valor</TableHead>
                 <TableHead>Riesgo</TableHead>
@@ -56,8 +61,8 @@ export function TableDocument(){
           <TableBody>
             {documents.map((doc) => (
               <TableRow key={doc.id}>
-                <TableCell className="font-medium">{doc.name}</TableCell>
-                <TableCell>{doc.categories}</TableCell>
+                <TableCell className="font-medium">{doc.category}</TableCell>
+                <TableCell>{doc.name}</TableCell>
                 <TableCell>{doc.description}</TableCell>
                   <TableCell>{doc.value}</TableCell>
                   <TableCell>{doc.risk}</TableCell>
@@ -66,6 +71,7 @@ export function TableDocument(){
           </TableBody>
         </Table>
         <div className="flex items-center justify-between mt-6">
+            <button onClick={HandleExport}>Exportar</button>
 
         </div>
       </main>

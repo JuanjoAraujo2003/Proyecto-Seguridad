@@ -1,5 +1,6 @@
 import { Input } from "./ui/input.tsx"
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export function NavBar(){
 
@@ -13,15 +14,15 @@ export function NavBar(){
             Document Library
           </a>
           <nav className="flex items-center gap-4">
-            <a href="#" className="hover:underline" >
+            <Link to="/document-create" className="hover:underline" >
               Create Document
-            </a>
-            <a href="#" className="hover:underline" >
+            </Link>
+            <Link to="/documents" className="hover:underline" >
               List Documents
-            </a>
-            <a href="#" className="hover:underline" >
+            </Link>
+            <Link to="/import-document" className="hover:underline" >
               Import Document
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="relative">
