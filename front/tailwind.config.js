@@ -7,6 +7,9 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
+  colors: {
+    "Principal": "#38bdf8",
+  },
   prefix: "",
   theme: {
     container: {

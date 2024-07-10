@@ -8,20 +8,20 @@ export function NavBar(){
 
     return(
 
-        <header className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between">
+        <header className="bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between bg-cyan-200">
         <div className="flex items-center gap-4">
           <a href="#" className="font-bold text-lg" >
-            Document Library
+            Proyecto Integrador
           </a>
           <nav className="flex items-center gap-4">
             <Link to="/document-create" className="hover:underline" >
-              Create Document
+              Crear Activo
             </Link>
             <Link to="/documents" className="hover:underline" >
-              List Documents
+              Lista Activos
             </Link>
             <Link to="/import-document" className="hover:underline" >
-              Import Document
+              Importar Documento
             </Link>
           </nav>
         </div>

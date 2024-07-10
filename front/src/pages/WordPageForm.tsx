@@ -11,6 +11,8 @@ export function WordForm() {
     const onSubmit = handleSubmit(async (data) => {
         const response = await createDocument(data)
         console.log(response)
+        window.alert("Los datos se han agregado con exitó")
+        window.location.reload()
 
     });
 

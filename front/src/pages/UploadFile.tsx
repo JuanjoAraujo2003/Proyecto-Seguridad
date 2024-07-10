@@ -16,6 +16,7 @@ export function UploadFile() {
         fromData.append("file", file)
         const fileResponse = await importDocument(fromData)
         console.log(fileResponse)
+        window.alert("El archivo se ha subido con éxito")
     }
 
 
