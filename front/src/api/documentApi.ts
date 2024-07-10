@@ -4,14 +4,16 @@ export const getAllDocuments = () => {return axios.get("http://localhost:8000/ap
 export const createDocument = (document) => {return axios.post("http://localhost:8000/api/v1/value/", document)}
 
 export const exportDb = () => {
-    const file =  axios.get("http://localhost:8000/export/csv/", {responseType:"blob"})
-    const url = window.URL.createObjectURL(new Blob([file.data], {type:"text/csv"}))
-    const link = document.createElement("a")
-    link.href = url
-    link.setAttribute("download", "data.csv")
-    document.body.appendChild(link)
-    link.click()
-    link.remove()
+    return  axios.get("http://localhost:8000/export/csv/", {responseType:"blob"})
+}
+
+export const deleteDocumentById = (id) => {
+    return axios.delete(`http://localhost:8000/api/v1/value/${id}/`)
+}
+
+export const deleteAllDocuments = () => {
+    return axios.post("http://localhost:8000/delete/all/")
+
 }
 
 export const importDocument = async (formdata) =>

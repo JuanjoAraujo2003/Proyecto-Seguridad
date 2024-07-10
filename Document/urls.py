@@ -11,5 +11,6 @@ router.register(r'value', views.DocumentView, "value")
 urlpatterns = [
     path("api/v1/", include(router.urls)),
     path("api/upload/", FileUploadView.as_view(), name="file-upload"),
-    path("export/csv/", export_csv, name="export-csv")
+    path("export/csv/", export_csv, name="export-csv"),
+    path("delete/all/", views.delete_all_documents, name="delete-all-documents")
 ]

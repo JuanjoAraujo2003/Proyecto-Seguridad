@@ -52,6 +52,15 @@ def export_csv(request):
 
     return response
 
+def delete_all_documents(request):
+    if request.method == "POST":
+
+        TableActives.objects.all().delete()
+        return Response({"message": "Datos Eliminados"}, status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response({"message": "Datos no eliminados"}, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 

@@ -8,10 +8,11 @@ import { Button } from "../components/ui/button.tsx";
 
 export function WordForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = async (data) => {
-        const response = await createDocument(data);
-        console.log(response);
-    };
+    const onSubmit = handleSubmit(async (data) => {
+        const response = await createDocument(data)
+        console.log(response)
+
+    });
 
     return (
         <div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center min-h-screen">
@@ -25,31 +26,31 @@ export function WordForm() {
                             <form className="grid gap-4" onSubmit={onSubmit}>
                                 <div className="grid gap-2">
                                     <Label htmlFor="category">Category</Label>
-                                    <input id="category" name="category" {...register("category")}/>
+                                    <Input id="category"  {...register("category")}/>
                                     {errors.title && <span>This field is required</span>}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="name">Name</Label>
-                                    <input id="name" name="name" {...register("name")}/>
+                                    <Input id="name"{...register("name")}/>
                                     {errors.size && <span>This field is required</span>}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="description">Description</Label>
-                                    <input id="description" name="description" {...register("description")}/>
+                                    <Input id="description" {...register("description")}/>
                                     {errors.lastModified && <span>This field is required</span>}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="value">Value</Label>
-                                    <input id="value" name="value" {...register("value")}/>
+                                    <Input id="value" {...register("value")}/>
                                     {errors.size && <span>This field is required</span>}
                                 </div>
                                 <div className="grid gap-2">
                                     <Label htmlFor="risk">Risk</Label>
-                                    <input id="risk" name="risk" {...register("risk")}/>
+                                    <Input id="risk"{...register("risk")}/>
                                     {errors.size && <span>This field is required</span>}
                                 </div>
                                 <CardFooter>
-                                    <button onClick={() => console.log("document")} type="submit">Save</button>
+                                    <Button onClick={() => console.log("document")} type="submit">Save</Button>
                                     <Button variant="outline" onClick={() => console.log('Cancel')}>Cancel</Button>
                                 </CardFooter>
                             </form>
